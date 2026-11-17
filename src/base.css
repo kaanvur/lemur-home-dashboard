@@ -26,6 +26,17 @@
 .ni ha-icon { display: block; width: 100%; --mdc-icon-size: 100%; }
 /* renkli simgelerde yalnızca seçili oda renkli, diğerleri soluk */
 .nn { font-size: 16.8px; line-height: 20px; max-width: 100%; padding: 0 6px; box-sizing: border-box; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.navb { position: relative; isolation: isolate; }
+.navb > .ni, .navb > .nn, .navb > .ntstats { position: relative; z-index: 1; }
+.ntstats { flex: 0 0 auto; display: flex; flex-wrap: wrap; justify-content: center; max-width: 100%; box-sizing: border-box; padding: 5px 4px 0; font-size: 13px; line-height: 18px; color: var(--lp-text2); font-variant-numeric: tabular-nums; }
+.nts { display: flex; align-items: center; min-width: 0; max-width: 100%; margin: 0 3px; }
+.nts:first-child { color: var(--lp-text); font-weight: 600; }
+.nts > .ntval { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.ntpresence { position: absolute; top: 0; right: 0; bottom: 0; left: 0; z-index: 0; pointer-events: none; opacity: 0; color: var(--lp-on-icon); background: radial-gradient(ellipse at 100% 0, rgba(255, 193, 7, 0.10), rgba(255, 193, 7, 0.025) 55%, transparent 85%); }
+.ntpresence.active { opacity: 1; }
+.ntpresence > .lic { position: absolute; top: 8px; right: 8px; width: 28px; height: 28px; opacity: 0.12; filter: grayscale(1); }
+.ntpresence::before, .ntpresence::after { content: ''; position: absolute; top: -38px; right: -42px; width: 140px; height: 140px; border: 1px solid currentColor; border-radius: 50%; opacity: 0.07; }
+.ntpresence::after { top: -64px; right: -68px; width: 192px; height: 192px; opacity: 0.045; }
 .clock { flex: 1 0 150px; margin-left: 8px; text-align: center; font-size: 32px; line-height: 40px; font-weight: 700; font-variant-numeric: tabular-nums; }
 
 /* bölüm kutuları */
@@ -485,6 +496,21 @@
 .phone .phd.bbar .clock { left: auto; top: auto; transform: none; margin-left: auto; }
 .phone .phd.bbar .bbv { margin-left: 0; font-size: 18px; line-height: 32px; }
 .phone .phd.bbar .bbv:empty { display: none; }
+.clock[hidden] { display: none !important; }
+.clock.hinfo { display: flex; flex-direction: column; align-items: center; justify-content: center; min-width: 0; }
+.clock.hinfo .hdate { max-width: 100%; font-size: 14px; line-height: 20px; font-weight: 500; color: var(--lp-text2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.clock.hinfo .hweather { display: flex; align-items: center; justify-content: center; max-width: 100%; margin-top: 4px; font-size: 15px; line-height: 22px; font-weight: 500; color: var(--lp-text2); }
+.hweather > .lic { flex: 0 0 22px; width: 22px; height: 22px; margin-right: 6px; }
+.hweather > span:last-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bbar > .clock.hinfo { position: relative; left: auto; top: auto; transform: none; flex: 1 1 0%; margin: 0 10px; }
+.phone .nav > .clock.hinfo { display: none; }
+.phone .phd.hasinfo { flex-wrap: wrap; }
+.phone .phd.hasinfo .bbv { margin-left: auto; }
+.phone .phd .clock.hinfo { display: flex; flex: 1 1 100%; flex-direction: row; flex-wrap: wrap; align-items: center; justify-content: space-between; margin: 4px 0 0; text-align: left; }
+.phone .phd .clock.hinfo .htime { line-height: 26px; }
+.phone .phd .clock.hinfo .hdate { font-size: 11px; line-height: 16px; }
+.phone .phd .clock.hinfo .hweather { margin-top: 2px; font-size: 12px; line-height: 18px; }
+.phone .hweather > .lic { flex-basis: 18px; width: 18px; height: 18px; margin-right: 4px; }
 /* kameralar (2026-11-05): 16:9 anlık görüntü karosu, adı sol altta; çevrimdışıysa sade yüz */
 .cams { display: grid; grid-gap: 8px; flex: 0 0 auto; align-self: stretch; width: 100%; box-sizing: border-box; }
 .cam { position: relative; padding-top: 56.25%; border-radius: 18px; overflow: hidden; background: var(--lp-embed-bg); cursor: pointer; -webkit-tap-highlight-color: transparent; }
